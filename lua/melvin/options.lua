@@ -14,7 +14,7 @@ vim.opt.smartindent = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.diagnostic.config({ virtual_text = { current_line = true } })

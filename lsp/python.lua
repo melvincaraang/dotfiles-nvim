@@ -14,8 +14,9 @@ return {
     settings = {
         basedpyright = {
             analysis = {
+                pythonVersion = "3.9",
                 autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly"
+                diagnosticMode = "openFilesOnly",
                 -- useLibraryCodeForTypes = true
             }
         }
