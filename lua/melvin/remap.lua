@@ -23,3 +23,6 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- Remap "Go to last file opened"
 vim.keymap.set("n", "<leader><Tab>", "<C-^>")
+
+-- Diagnostics
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)

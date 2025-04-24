@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
 
     -- Git integration
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
     -- File searcher
     use {
