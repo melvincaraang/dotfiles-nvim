@@ -39,7 +39,7 @@ return require('packer').startup(function(use)
         build = ":MasonUpdate",
         config = function()
             require("mason").setup({
-                ensure_installed = { "lua-language-server", "pyright" },
+                ensure_installed = { "lua-language-server", "basedpyright" },
             })
         end,
     }

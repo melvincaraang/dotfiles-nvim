@@ -26,3 +26,17 @@ vim.keymap.set("n", "<leader><Tab>", "<C-^>")
 
 -- Diagnostics
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+
+-- Normal mode: open current file on branch
+vim.keymap.set('n', '<leader>gb', function()
+  vim.cmd('GBrowse')
+end, { desc = 'GBrowse current file on branch' })
+
+-- Visual mode: open selected lines on branch
+vim.keymap.set('v', '<leader>gb', function()
+  -- Exit visual mode and run GBrowse! with the last visual selection
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "x", false)
+  vim.schedule(function()
+    vim.cmd("'<,'>GBrowse")
+  end)
+end, { desc = 'GBrowse selected lines on branch' })
