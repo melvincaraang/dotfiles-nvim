@@ -6,6 +6,6 @@ return {
         'jsconfig.json',
         '.git',
     },
-    filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx' },
     single_file_support = true,
 }
