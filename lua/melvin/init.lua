@@ -1,4 +1,4 @@
 require("melvin.remap")
 require("melvin.options")
 require("melvin.lsp")
-
+require("melvin.lazy")
