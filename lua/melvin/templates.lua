@@ -10,6 +10,8 @@ end, { desc = 'Insert current date' })
 -- Notes
 vim.keymap.set('n', '<leader>inotes', function()
     local template_path = vim.fn.stdpath("config") .. "/templates/notes_template.md"
+    local date = os.date("%Y-%m-%d")
     local lines = vim.fn.readfile(template_path)
+    table.insert(lines, 1, "# " .. date)
     vim.api.nvim_put(lines, "", true, true)
 end, { desc = 'Insert notes template' })

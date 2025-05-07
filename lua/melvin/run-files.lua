@@ -1,5 +1,10 @@
 -- This script sets up key mappings to run files, usually in a floating terminal window
 
+function PipeToLess(cmd)
+    local pipe_cmd = cmd .. " 2>&1 | tee /tmp/nvim_run_out.log && less +G /tmp/nvim_run_out.log"
+    return pipe_cmd
+end
+
 -- Run python file
 vim.keymap.set('n', '<leader>rp', function()
     local filepath = vim.fn.expand("%:p")
@@ -26,7 +31,7 @@ vim.keymap.set('n', '<leader>rp', function()
     })
 
     -- Run the Python file in the terminal inside the floating window
-    local cmd = string.format("cd %s && python %s 2>&1 | tee /tmp/nvim_run_out.log && less +G /tmp/nvim_run_out.log",
+    local cmd = string.format(PipeToLess("cd %s && python %s"),
         vim.fn.shellescape(filedir),
         vim.fn.shellescape(filepath))
     vim.fn.termopen(cmd)
@@ -61,7 +66,7 @@ vim.keymap.set('n', '<leader>rb', function()
     })
 
     -- Run the Python file in the terminal inside the floating window
-    local cmd = string.format("cd %s && zsh %s", vim.fn.shellescape(filedir), vim.fn.shellescape(filepath))
+    local cmd = string.format(PipeToLess("cd %s && %s"), vim.fn.shellescape(filedir), vim.fn.shellescape(filepath))
     vim.fn.termopen(cmd)
 
     -- Automatically enter insert mode
@@ -114,7 +119,7 @@ vim.keymap.set('n', '<leader>rt', function()
     })
 
     -- Run the unit tests using python unittest in the terminal inside the floating window
-    local cmd = string.format("cd %s && python -m unittest %s", vim.fn.shellescape(root_dir),
+    local cmd = string.format(PipeToLess("cd %s && python -m unittest %s"), vim.fn.shellescape(root_dir),
         vim.fn.shellescape(filepath))
     vim.fn.termopen(cmd)
 
