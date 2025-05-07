@@ -36,3 +36,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 vim.o.completeopt = 'menuone,popup,noinsert'
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)

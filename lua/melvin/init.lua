@@ -1,4 +1,7 @@
+require("melvin.lazy")
 require("melvin.remap")
 require("melvin.options")
 require("melvin.lsp")
-require("melvin.lazy")
+require("melvin.templates")
+require("melvin.run-files")
+require("melvin.llm")

@@ -17,7 +17,7 @@ return {
 
 
 
-        opts = { noremap = true, silent = true }
+        local opts = { noremap = true, silent = true }
 
         -- Toggle breakpoint
         vim.keymap.set('n', '<leader>db', function()
