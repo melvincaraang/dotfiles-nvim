@@ -39,7 +39,7 @@ function PromptLLM()
 
         -- LLM command (pipe the code context and user prompt to llm)
         local cmd = "cat " ..
-            tmpfile .. " | llm -m gemini-2.0-flash | tee /tmp/glowbuf.md; glow -p /tmp/glowbuf.md"
+            tmpfile .. " | llm -m " .. model .. " | tee /tmp/glowbuf.md && clear && glow -p /tmp/glowbuf.md"
 
         -- Run the command in the terminal window
         vim.fn.termopen(cmd, {

@@ -1,3 +1,5 @@
+## Attendees
+- Melvin
 ## Agenda
 - 
 ## Questions
