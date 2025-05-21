@@ -30,3 +30,13 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = false
+
+-- Format Options
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "json",
+    callback = function()
+        vim.opt_local.formatprg = "jq"
+    end,
+})

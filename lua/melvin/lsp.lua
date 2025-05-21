@@ -1,4 +1,4 @@
-vim.lsp.enable({ 'python', 'luals', 'typescript' })
+vim.lsp.enable({ 'luals', 'typescript', 'python' })
 
 
 local opts = { noremap = true, silent = true }

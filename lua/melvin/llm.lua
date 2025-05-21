@@ -1,5 +1,5 @@
 -- local model = "gemini-2.0-flash"
-local model = "gemini-2.5-pro-exp-03-25"
+local model = "gemini-2.5-flash-preview-04-17"
 
 function PromptLLM()
     vim.ui.input({ prompt = "LLM Prompt: ", default = "" }, function(user_prompt)
