@@ -1,58 +1,35 @@
 return {
     'mfussenegger/nvim-dap',
+    lazy = true,
+    cmd = {
+        "DapContinue", "DapToggleBreakpoint", "DapStepOver", "DapStepInto",
+        "DapStepOut", "DapTerminate"
+    },
+    keys = {
+        { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+        { "<leader>dc", function() require("dap").continue() end,          desc = "Continue Debugging" },
+        { "<leader>do", function() require("dap").step_over() end,         desc = "Step Over" },
+        { "<leader>di", function() require("dap").step_into() end,         desc = "Step Into" },
+        { "<leader>dO", function() require("dap").step_out() end,          desc = "Step Out" },
+        { "<leader>dt", function() require("dap").terminate() end,         desc = "Terminate Debugging" },
+        { "<leader>du", function() require("dapui").toggle() end,          desc = "Toggle Dap UI" },
+    },
     dependencies = {
-        'mfussenegger/nvim-dap-python',
-        'rcarriga/nvim-dap-ui',
-        "mfussenegger/nvim-dap",
-        "nvim-neotest/nvim-nio"
+        {
+            "mfussenegger/nvim-dap-python",
+            config = function()
+                require("dap-python").setup("~/.venvs/debugpy/bin/python")
+            end,
+        },
+        {
+            "rcarriga/nvim-dap-ui",
+            dependencies = { "nvim-neotest/nvim-nio" },
+            config = function()
+                require("dapui").setup()
+            end,
+        },
     },
     config = function()
-        local dap = require('dap')
-        local dap_ui = require('dapui')
-        local dap_python = require('dap-python')
-
-
-        dap_ui.setup()
-        dap_python.setup("~/.venvs/debugpy/bin/python")
-
-
-
-        local opts = { noremap = true, silent = true }
-
-        -- Toggle breakpoint
-        vim.keymap.set('n', '<leader>db', function()
-            dap.toggle_breakpoint()
-        end, opts)
-
-        -- Continue / Start
-        vim.keymap.set('n', '<leader>dc', function()
-            dap.continue()
-        end, opts)
-
-        -- Step Over
-        vim.keymap.set('n', '<leader>do', function()
-            dap.step_over()
-        end, opts)
-
-        -- Step Into
-        vim.keymap.set('n', '<leader>di', function()
-            dap.step_into()
-        end, opts)
-
-        -- Step Out
-        vim.keymap.set('n', '<leader>dO', function()
-            dap.step_out()
-        end, opts)
-
-        -- Terminate
-        vim.keymap.set('n', '<leader>dt', function()
-            dap.terminate()
-        end, opts)
-
-        -- DapUI Toggle
-        vim.keymap.set('n', '<leader>du', function()
-            dap_ui.toggle()
-        end, opts)
-    end
-
+        -- Optional general DAP configuration here
+    end,
 }

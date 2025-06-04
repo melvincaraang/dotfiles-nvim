@@ -13,14 +13,14 @@ return {
     filetypes = { 'python' },
     settings = {
         basedpyright = {
-            include = {"./"},
-            exclude = {"**/__pycache__", "**/node_modules"},
+            include = { "./" },
+            exclude = { "**/__pycache__", "**/node_modules", "**/.git", "**/.venv", "**/build", "**/dist" },
             reportMissingTypeStubs = false,
             analysis = {
                 pythonVersion = "3.9",
                 autoSearchPaths = true,
                 diagnosticMode = "workspace",
-                typeCheckingMode = "basic",
+                typeCheckingMode = "standard",
                 reportMissingTypeStubs = false,
                 autoImportCompletions = true,
                 useLibraryCodeForTypes = true
